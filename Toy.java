@@ -1,6 +1,7 @@
 package Toys_Lottery;
 
-public class Toy{
+
+public class Toy {
     private int id;
     private String name;
     private int weight;
