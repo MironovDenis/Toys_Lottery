@@ -1,0 +1,5 @@
+
+1. Police Car. Chance to fall: 6.0%
+2. Barbie. Chance to fall: 9.0%
+3. Teddy Bear. Chance to fall: 13.0%
+4. Colored Ball. Chance to fall: 70.0%

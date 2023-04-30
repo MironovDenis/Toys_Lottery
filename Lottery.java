@@ -1,5 +1,8 @@
 package Toys_Lottery;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -8,12 +11,12 @@ import java.util.PriorityQueue;
 public class Lottery {
     public static void main(String[] args) {
 
-        Toy input1 = new Toy(1, "Плюшевый медведь", 30);
-        Toy input2 = new Toy(2, "Кукла Маша", 20);
-        Toy input3 = new Toy(3, "Машинка", 15);
-        Toy input4 = new Toy(4, "Мячик", 155);
-
         List<Toy> toys = new ArrayList<Toy>();
+        
+        Toy input1 = new Toy(1, "Teddy Bear", 30);
+        Toy input2 = new Toy(2, "Barbie", 20);
+        Toy input3 = new Toy(3, "Police Car", 15);
+        Toy input4 = new Toy(4, "Colored Ball", 155);
         
         toys.add(input1);
         toys.add(input2);
@@ -35,8 +38,20 @@ public class Lottery {
 
         for (int i = 0; i < count; i++) {
             Toy current = queue.poll();
+            String name = current.getName();
             float chance = current.getWeight()*100/totalWeight;
-            System.out.println(i+1 + ". " + current.getName() + ". Шанс выпадения: " + chance + "%");
+            System.out.println(i+1 + ". " + name + ". Шанс выпадения: " + chance + "%");
+            writeToFile(i, name, chance);
+        }
+
+    }
+
+    private static void writeToFile(int i, String string, float chance) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("Lotery.txt", true))){
+            writer.write(i+1 + ". " + string + ". Chance to fall: " + chance + "%");
+            writer.newLine();
+        } catch (IOException e){
+            e.printStackTrace();
         }
     }
 }
